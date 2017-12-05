@@ -1,94 +1,23 @@
-source 'http://git.tuan800-inc.com/mobile_iphone/cocoapods.git'
+source 'https://github.com/LeAustinHan/IPSTestProject.git'
 #source 'https://github.com/CocoaPods/Specs.git'
 
 
 platform :ios, '7.0'
+
 target 'IPSTestProject' do
     
-    
-inhibit_all_warnings!
+pod 'YYKit', '~> 1.0.9'
+pod 'Masonry', '~> 1.0.2'
+pod 'MJRefresh'
 
-pod 'TBCore', '~> 3.0.0'
-pod 'TBUI', '~> 8.1.0'
-pod 'TBService', '~> 7.17.0'
-pod 'TBSharekit', '~> 3.0.0'
-pod 'TBNetwork', '~> 7.5.0'
-pod 'TBIM', '~> 7.7.0'
-#pod 'Tao800Account', '~> 8.1.0'
-pod 'Tao800Address', '~> 7.5.0'
-pod 'Tao800Analysis', '~> 6.7.0'
-pod 'Tao800Brand', '~> 7.16.0'
-pod 'Tao800BrowseHistory', '~> 7.6.0'
-pod 'Tao800Checkin', '~> 7.15.0'
+  target 'IPSTestProjectTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
-pod 'Tao800Config', '~> 7.9.0'
-#pod 'Tao800Core', '~> 7.17.0'
-pod 'Tao800Customer','4.1.0'
-pod 'Tao800DailyTen', '~> 7.7.0'
-pod 'Tao800Deal', '~> 8.3.0'
-pod 'Tao800Detail', '~> 7.8.0'
-pod 'Tao800Favorite', '~> 7.10.0'
-pod 'Tao800Feedback','~> 7.4.0'
-pod 'Tao800Forenotice', '~> 7.6.0'
-pod 'Tao800Home', '~> 8.3.0'
-pod 'Tao800IM', '~> 7.7.0'
-pod 'Tao800Launch', '~> 7.8.0'
-pod 'Tao800Lottery', '~> 6.9.0'
-pod 'Tao800MessageCenter', '~> 7.10.0'
-pod 'Tao800Mobile','~> 7.1.0'
-pod 'Tao800Notification', '~> 6.11.0'
-pod 'Tao800Order', '~>7.13.0’
-pod 'Tao800Payment','~> 7.1.0'
-#pod 'Tao800PersonalHome', '~> 7.14.0'
-pod 'Tao800PersonalInfo', '~> 7.8.0'
-pod 'Tao800Remind', '~> 7.2.0'
-pod 'Tao800Scanner', '~> 7.6.0'
-pod 'Tao800Search', '~> 7.16.0'
-#pod 'Tao800Setting', '~> 7.8.0'
-pod 'Tao800Share', '~> 8.0.0'
-pod 'Tao800Style','~> 5.2.0'
-pod 'Tao800Tag', '~> 7.13.0'
-pod 'Tao800TaobaoWeb','~> 6.6.0'
-pod 'Tao800Tip', '~> 7.1.0'
-pod 'Tao800Today', '~> 7.12.0'
-pod 'Tao800UI', '~> 7.17.0'
-pod 'Tao800UserRole', '~> 7.7.0'
-pod 'Tao800Web', '~> 8.2.0'
-pod 'Tao800Sku', '~> 1.8.0'
-pod 'Tao800GoodsDetail', '~> 7.2.0'
-pod 'Tao800Cart', '~> 7.15.0'
-pod 'Tao800CPC', '~> 7.6.0'
-pod 'Tao800PinTuan', '~> 7.7.0'
-pod 'BZMTemplate', '~> 7.11.0'
-pod 'BZMLimitedBuy', '~> 7.7.0'
-pod 'SocketRocket', '~>0.4.0'
-pod 'BZMStatisticSDK', '~>2.1.0'
-pod 'TingyunApp'
-pod 'WSPX', '6.1.2.331.3'
-pod 'XMPPFramework', '3.7.3'
-pod 'AMapLocation'
-
-#pod 'Tao800UI', :path => '../../tao800ui'
-#pod 'Tao800Today', :path => '../../tao800today'
-#pod 'Tao800Deal', :path => '../../tao800deal'
-#pod 'Tao800Home', :path => '../../tao800home'
-
-#pod 'BZMStatisticSDK', :path => '../../bzmstatisticsdk'
-pod 'Tao800Core', :path => '../../tao800core'
-#pod 'TBUI', :path => '../../tbui'
-pod 'Tao800Setting', :path => '../../tao800setting'
-pod 'Tao800Account', :path => '../../tao800account'
-pod 'Tao800PersonalHome', :path => '../../tao800personalhome'
-
-
-
-pod 'QQPaySDK'
-pod 'UnionPaySDK'
-pod 'WebChatSDK'
-pod 'AlipaySDKY'
-pod 'SinaWeiboSDK'
-pod 'WebChatSDK'
-pod 'TencentOpenAPI'
-pod 'WebP'
+  target 'IPSTestProjectUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end
