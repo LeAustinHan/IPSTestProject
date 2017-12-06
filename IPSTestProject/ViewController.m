@@ -26,14 +26,13 @@
     [self sendWebView];
     
     UIButton *silenceButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    silenceButton.frame = CGRectMake(100, 550, 200, 40);
     [silenceButton setTitle:@"安静" forState:UIControlStateNormal];
     silenceButton.backgroundColor = [UIColor redColor];
     [silenceButton addTarget:self action:@selector(resetSilence) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:silenceButton];
     
     // 防止block中的循环引用
-    __weak typeof (self) weakSelf = self;
+    //__weak typeof (self) weakSelf = self;
     // 使用mas_makeConstraints添加约束
     [silenceButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(100);
@@ -44,11 +43,18 @@
     
     
     UIButton *loudButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    loudButton.frame = CGRectMake(100, 600, 200, 40);
     [loudButton setTitle:@"大声" forState:UIControlStateNormal];
     loudButton.backgroundColor = [UIColor orangeColor];
     [loudButton addTarget:self action:@selector(resetLoud) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loudButton];
+    
+    // 使用mas_makeConstraints添加约束
+    [loudButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(100);
+        make.top.mas_equalTo(600);
+        make.height.mas_equalTo(40);
+        make.width.mas_equalTo(200);
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
 }

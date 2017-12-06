@@ -1,3 +1,5 @@
 IPSTestProject.xcworkspace/*
 /Pods
-
+IPSTestProject.xcworkspace/
+xcuserdata/ 
+*.xcuserstate
