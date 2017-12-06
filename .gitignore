@@ -1,5 +1,13 @@
 IPSTestProject.xcworkspace/*
-/Pods
-IPSTestProject.xcworkspace/
-xcuserdata/ 
+/Pods 
 *.xcuserstate
+
+.S_Store
+.idea/
+*.pyc
+idea/
+build/
+Pods/
+xcuserdata/
+*.xcworkspace
+Podfile.lock
