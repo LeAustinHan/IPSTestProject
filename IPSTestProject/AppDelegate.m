@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 @interface AppDelegate ()
 
 @end
@@ -17,9 +19,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self observeUserModifySystemVoiceAction];
+    
     return YES;
 }
-
+//监听系统声音修改
+- (void)observeUserModifySystemVoiceAction{
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryAmbient error:nil];//重点方法
+    [session setActive:YES error:nil];
+    NSError *error;
+    [[AVAudioSession sharedInstance] setActive:YES error:&error];
+    //注，iOS9上不加这一句会无效
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
