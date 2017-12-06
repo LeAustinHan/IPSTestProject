@@ -1,6 +1,6 @@
 /Pods 
 *.xcuserstate
-
+*.xcworkspace/
 .S_Store
 .idea/
 *.pyc
