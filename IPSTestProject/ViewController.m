@@ -56,7 +56,8 @@
         make.width.mas_equalTo(200);
     }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+    [self resetLoud];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(volumeChanged:) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
 }
 
 - (void)sendWebView{
@@ -70,7 +71,6 @@
 
 //设置静默（不是设置静音开关）
 - (void)resetSilence{
-    
     MPVolumeView *volumeView = nil;
     //防止重复加载
     for (UIView *view in [self.view subviews]){
@@ -100,8 +100,9 @@
             break;
         }
     }
-    
-    [volumeViewSlider setValue:0.0];//设置静音，音量为0
+    float systemVolume = volumeViewSlider.value;
+    //[volumeViewSlider setValue:0.0];//设置静音，音量为0
+    [volumeViewSlider setValue:0.0f animated:YES];
     //为了保证声控视图不显示，不可以立即移除视图
     //[self performSelector:@selector(remoVolumeView:) withObject:volumeView afterDelay:3.0];
 }
@@ -137,14 +138,19 @@
             break;
         }
     }
-    
     //此种方法不可行
     float currentVolume = volumeViewSlider.value;
     NSLog(@"当前音量 %f",currentVolume);
     
-    [volumeViewSlider setValue:0.2];
+    //[volumeViewSlider setValue:0.2];
     //为了保证声控视图不显示，不可以立即移除视图
-    //[self performSelector:@selector(remoVolumeView:) withObject:volumeView afterDelay:2.0];
+    [self performSelector:@selector(regetVolumeValue:) withObject:volumeViewSlider afterDelay:2.0];
+}
+- (void)regetVolumeValue:(UISlider*)volumeViewSlider{
+    if (volumeViewSlider) {
+        float currentVolume = volumeViewSlider.value;
+        NSLog(@"当前音量 %f",currentVolume);
+    }
 }
 
 - (void)remoVolumeView:(UIView *)volumeView{
@@ -158,7 +164,7 @@
     float volume = [[[notification userInfo] objectForKey:@"AVSystemController_AudioVolumeNotificationParameter"] floatValue];
     NSLog(@"XES--当前系统音量--%f", volume);
     //当前交互，接收到用户修改声音设置成静默
-    [self resetSilence];
+    [self resetLoud];
 }
 
 - (void)didReceiveMemoryWarning {
